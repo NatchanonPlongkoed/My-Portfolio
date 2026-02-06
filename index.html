@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+        </ul>
+        <div id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </div>
+        </a>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-text">
+            <p class="greeting">Hello, I am</p>
+
+            <h1>
+                <span id="typing-text"></span><span class="cursor">&nbsp;</span>
+            </h1>
+
+            <h2 class="role-title">
+                Full Stack Developer
+            </h2>
+
+            <p class="sub-text">
+                Computer Engineering Student. <br>
+                Rajamangala University of Technology Thanyaburi
+            </p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/natchanon.plongkoed" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.instagram.com/nonnajaaaa/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://github.com/NatchanonPlongkoed" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <p>
+                    <a href="#"
+                        onclick="navigator.clipboard.writeText('chanon.pk2018@gmail.com'); alert('คัดลอกอีเมลเรียบร้อย! : chanon.pk2018@gmail.com'); return false;">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </p>
+
+
+    </header>
+
+
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2>about me</h2>
+            <div class="line"></div>
+        </div>
+
+
+
+        <p class="about-desc">
+           ผมเป็นนักศึกษาวิศวกรรมคอมพิวเตอร์ที่มีความสนใจด้านการพัฒนาซอฟต์แวร์และระบบคอมพิวเตอร์มีพื้นฐานการเขียนโปรแกรมและการทำงานกับเทคโนโลยีด้านไอที รวมถึงการใช้งานเครื่องมือพื้นฐานในการพัฒนาระบบปัจจุบันมุ่งพัฒนาทักษะอย่างต่อเนื่อง พร้อมเรียนรู้สิ่งใหม่ ๆ และเปิดรับประสบการณ์จากการฝึกงานจริง
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3><i class="fas fa-network-wired"></i> Network</h3>
+                <p>Cisco</p>
+            </div>
+            <div class="stat-item">
+                <h3><i class="fas fa-microchip"></i> IoT & Embedded</h3>
+                <p>Arduino / ESP32 / Blynk</p>
+            </div>
+            <div class="stat-item">
+                <h3><i class="fas fa-brain"></i> AI & Data</h3>
+                <p>Python / Machine Learning</p>
+            </div>
+            <div class="stat-item">
+                <h3><i class="fas fa-code"></i> Languages</h3>
+                <p> C / C++ / HTML / CSS / Java </p>
+            </div>
+            <div class="stat-item">
+                <h3><i class="fas fa-toolbox"></i> Framework & Tools</h3>
+                <p>Flutter / Git / GitHub / VSCode</p>
+            </div>
+            <div class="stat-item">
+                <h3><i class="fas fa-database"></i> Database </h3>
+                <p>MySQL, Firebase (พื้นฐาน)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="work-section">
+        <div class="section-header">
+            <h2>Work</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="project-gallery">
+            <div class="project-card" onclick="openModal(1)">
+                <div class="card-content">
+                    <h3>01</h3>
+                    <h4>Pakjai Station – Interlocking Station Simulation<p>(สถานีพักใจ : ระบบจำลองสถานีรถไฟแบบ Interlocking)</h4></p>
+                    <p>Pakjai Station คือระบบจำลองการทำงานของสถานีรถไฟแบบ Interlockingแสดงการเคลื่อนที่ของขบวนรถและการจัดการเส้นทางอย่างปลอดภัยพัฒนาด้วย Python และ Tkinter เพื่อฝึกการออกแบบระบบและ GUI</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span><a href="https://github.com/NatchanonPlongkoed/My-project-pakjai" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal(2)">
+                <div class="card-content">
+                    <h3>02</h3>
+                    <h4>ATM & Crypto Exchange System (Java Console Application)</h4>
+                    <p>พัฒนาโปรแกรม Java แบบ Console สำหรับจำลองระบบ ATM และการแลกเปลี่ยน Bitcoinรองรับระบบ Login (Manager / Customer) จัดการหลายบัญชี และคำนวณอัตรา BTC → THBออกแบบด้วยแนวคิด OOP แยกคลาสชัดเจน เช่น Manager, Account และ ATM</p>
+                    <div class="tech-stack">
+                        <span>JAVA</span><span><a href="https://github.com/NatchanonPlongkoed/ATM-Crypto-Exchange-System" target="_blank"><i class="fa-brands fa-github"></i> View on GitHub</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal(3)">
+                <div class="card-content">
+                    <h3>03</h3>
+                    <h4>ระบบวิเคราะห์และพยากรณ์ผลผลิตทางการเกษตรด้วย Machine Learning <p>In Progress 🚧</p></h4>
+                    <p>ระบบวิเคราะห์และพยากรณ์ผลผลิตทางการเกษตรโดยใช้เทคนิค Machine Learningวิเคราะห์ข้อมูลสภาพอากาศและปัจจัยแวดล้อมเพื่อคาดการณ์ผลผลิตล่วงหน้าพัฒนาเพื่อสนับสนุนการตัดสินใจในการวางแผนการเพาะปลูก</p>
+                    <div class="tech-stack">
+                        <span>Python</span><span>AI</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>© 2026 Built & Designed by Natchanon Plongkoed.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

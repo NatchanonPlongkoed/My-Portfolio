@@ -1,0 +1,687 @@
+/* --- 1. Variables & Theme Setup --- */
+:root {
+    /* --- ธีมสว่าง (Smart Nature - ค่าเริ่มต้น) --- */
+    --bg-color: #fdfbf7;       /* สีครีมถนอมสายตา */
+    --section-bg: #f2f0eb;     /* สีพื้นหลังส่วนงาน */
+    --card-bg: #ffffff;
+    --text-primary: #2d3436;   /* สีเทาเข้มเกือบดำ */
+    --text-secondary: #636e72;
+    --accent-color: #6b8c42;   /* สีเขียวใบไม้ */
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08); /* เงานุ่มๆ */
+    --border-color: rgba(0,0,0,0.05);
+    --transition: all 0.3s ease;
+}
+
+/* --- ธีมมืด (Dark Mode) --- */
+body.dark-mode {
+    --bg-color: #1a1a1a;       /* สีดำเทา */
+    --section-bg: #121212;     /* สีดำสนิท */
+    --card-bg: #252525;        /* สีเทาเข้ม */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-color: #81c784;   /* สีเขียวพาสเทล (สว่างขึ้นให้เห็นชัดบนพื้นดำ) */
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --border-color: rgba(255,255,255,0.1);
+}
+
+/* --- 2. Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition เวลาเปลี่ยนธีม */
+}
+
+/* --- 3. Utilities --- */
+.highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+
+/* --- 4. Navbar --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: var(--bg-color); /* ใช้ค่าตัวแปรเพื่อให้เปลี่ยนสีตามธีม */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* ปุ่มสลับธีม */
+.theme-btn {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-right: 20px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-btn:hover {
+    background-color: var(--border-color);
+    color: var(--accent-color);
+    transform: rotate(15deg);
+}
+
+.github-icon {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.github-icon:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* --- 5. Hero Section --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8% 0;
+    min-height: 90vh;
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.greeting {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* ชื่อที่จะพิมพ์ (Typewriter) */
+#typing-text {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+}
+
+/* ตำแหน่งงาน (Role) */
+.role-title {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+
+/* Cursor กระพริบ */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 3.5rem;
+    background-color: var(--accent-color);
+    margin-left: 5px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.sub-text {
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ปุ่ม Contact */
+.contact-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+    background: transparent;
+}
+
+.contact-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color); /* สลับสีตัวหนังสือให้ตัดกับพื้นหลัง */
+    box-shadow: 0 10px 20px rgba(107, 140, 66, 0.3);
+}
+
+/* รูปโปรไฟล์ */
+.hero-image {
+    flex: 1;
+    display: flex;
+    margin-left: 500px;
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-items: center;     /* จัดกึ่งกลางแนวตั้ง */
+    height: 100%;
+    position: relative;
+    padding-top: 10px;
+}
+
+.hero-image img {
+    width: 450px;
+    height: 500px;
+    
+    
+    /* จุดสำคัญ! สั่งให้โฟกัสที่ "ตรงกลาง ค่อนไปทางด้านล่าง" 
+       (เพราะรูปคนของคุณอยู่ด้านล่างของไฟล์) */
+    object-position: center bottom; 
+    
+    /* ซูมรูปเพิ่มอีก 30% ให้ตัวคนดูเต็มกรอบ */
+    transform: scale(1.3); 
+    
+    /* ตกแต่งกรอบ */
+    border-radius: 20px;
+    border: 2px solid var(--accent-color); /* เส้นขอบสีเขียว */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* เงา */
+    
+    /* ใส่สีพื้นหลังจางๆ ให้รู้ขอบเขต (ลบออกได้ถ้าไม่ชอบ) */
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
+    
+    transition: var(--transition);
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ */
+.hero-image img:hover {
+    transform: scale(1.35) translateY(-10px); /* ขยายและลอยขึ้นนิดนึง */
+    border-color: #fff;
+    box-shadow: 0 0 70px rgba(107, 140, 66, 0.6);
+}
+/* --- 6. About Section --- */
+.about-section {
+    padding: 100px 8%;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    margin-right: 20px;
+    text-transform: lowercase;
+    color: var(--text-primary);
+}
+
+.line {
+    height: 2px;
+    background-color: var(--border-color);
+    flex-grow: 1;
+    position: relative;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%; width: 100px;
+    background-color: var(--accent-color);
+}
+
+.about-desc {
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-bottom: 60px;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.stat-item {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.stat-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- 7. Work Section --- */
+.work-section {
+    padding: 80px 8% 100px;
+    background-color: var(--section-bg);
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 35px;
+    border-radius: 15px;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+    font-size: 4rem;
+    color: var(--border-color);
+    position: absolute;
+    top: 10px; right: 20px;
+    font-weight: 800;
+}
+
+.project-card h4 {
+    font-size: 1.5rem;
+    margin-top: 20px; margin-bottom: 15px;
+    color: var(--text-primary);
+    position: relative; z-index: 2;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    position: relative; z-index: 2;
+}
+
+.tech-stack {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    position: relative; z-index: 2;
+}
+
+.tech-stack span {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    background: rgba(107, 140, 66, 0.1); 
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+    color: var(--accent-color);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tech-stack span:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* --- 8. Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (มือถือ & ไอแพด)
+   ========================================= */
+
+/* สำหรับหน้าจอที่เล็กกว่า 1024px (iPad แนวตั้ง และ Tablet) */
+@media (max-width: 1024px) {
+    
+    /* 1. Navbar: ลดขอบข้างให้กว้างขึ้น */
+    nav {
+        padding: 20px 4%;
+    }
+
+    /* 2. Hero Section: จัดกึ่งกลาง */
+    .hero {
+        flex-direction: column-reverse; /* เอารูปขึ้นก่อน แล้วตามด้วยข้อความ */
+        justify-content: center;
+        text-align: center;
+        height: auto;       /* ปล่อยความสูงอิสระ */
+        padding-top: 120px; /* เว้นที่ให้รูปไม่ชนเมนู */
+    }
+
+    .hero-text {
+        padding-right: 0;
+        margin-top: 40px; /* เว้นระยะห่างระหว่างรูปกับข้อความ */
+    }
+    
+    /* 3. Reset ค่ารูปภาพ (สำคัญมาก!) */
+    /* ต้องลบค่าที่เราเคยดันไปขวาหรือซูมไว้ ไม่งั้นรูปจะล้นจอมือถือ */
+    .hero-image {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-image img {
+        width: 60%;         /* ใน iPad ให้รูปกว้าง 60% ของจอ */
+        height: auto;       /* สูงอัตโนมัติจะได้ไม่เบี้ยว */
+        margin-left: 0;     /* ยกเลิกการดันไปขวา */
+        transform: none;    /* ยกเลิกการซูม (Scale) */
+    }
+
+    /* 4. Skills Grid: ให้เหลือ 2 คอลัมน์พอ */
+    .skills-grid, .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* สำหรับหน้าจอที่เล็กกว่า 768px (มือถือทุกรุ่น) */
+@media (max-width: 768px) {
+
+    /* 1. ซ่อนเมนู (Link) ไปก่อน เพราะที่แคบ */
+    /* (ถ้าอยากได้ปุ่ม 3 ขีด Hamburger Menu ต้องเขียน JS เพิ่ม) */
+    .nav-links {
+        display: none; 
+    }
+
+    /* 2. ปรับขนาดตัวหนังสือให้เล็กลง */
+    #typing-text {
+        font-size: 2.5rem; /* ชื่อเล็กลงหน่อย */
+    }
+    
+    .role-title {
+        font-size: 1.4rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 3. รูปภาพในมือถือ */
+    .hero-image img {
+        width: 80%; /* ในมือถือให้รูปกว้างเกือบเต็มจอ */
+    }
+
+    /* 4. ปรับ Grid ทุกอย่างให้เรียงแถวเดียว (1 Column) */
+    .skills-grid, 
+    .stats-grid, 
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 5. ปรับปุ่มสลับธีม */
+    .theme-btn {
+        margin-right: 10px;
+    }
+}
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* ซ่อนไว้ก่อน */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังสีดำจางๆ */
+    backdrop-filter: blur(5px); /* เบลอฉากหลังให้ดูแพง */
+    overflow: auto; /* ให้เลื่อนลงได้ถ้าเนื้อหายาว */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-bg); /* ใช้สีตามธีม */
+    color: var(--text-primary);
+    margin: auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px; /* ความกว้างสูงสุด */
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    animation: slideUp 0.4s ease;
+    border: 1px solid var(--accent-color);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: var(--text-secondary);
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* ฝั่งรูปภาพ */
+.modal-img-container {
+    flex: 1;
+    min-width: 300px;
+    background-color: #000;
+    border-radius: 20px 0 0 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.modal-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ฝั่งเนื้อหา */
+.modal-text {
+    flex: 1;
+    padding: 40px;
+    min-width: 300px;
+}
+
+.modal-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.tech-stack-modal {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tech-stack-modal span {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 50px;
+}
+
+#modal-desc {
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+}
+
+.modal-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--accent-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* มือถือ: ให้เรียงแนวตั้ง */
+@media (max-width: 768px) {
+    .modal-body { flex-direction: column; }
+    .modal-img-container { border-radius: 20px 20px 0 0; height: 200px; }
+}
+/* --- Social Icons Styles --- */
+.social-icons {
+    /* แก้จาก 30px เป็น 50px หรือเลขที่ชอบ */
+    margin-top: 50px; 
+    
+    display: flex;
+    gap: 15px;
+}
+.social-icons {
+        justify-content: center; /* สั่งให้ไอคอนเรียงตรงกลาง */
+        margin-top: 30px;        /* จัดระยะห่างหน่อยจะได้ไม่ชิดเกินไป */
+    }
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* ทำเป็นวงกลม */
+    
+    /* สีพื้นฐาน (ก่อนชี้) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary); /* สีไอคอนสีเทา */
+    
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ */
+.social-icons a:hover {
+    background: var(--accent-color); /* พื้นหลังเปลี่ยนเป็นสีเขียว */
+    border-color: var(--accent-color);
+    color: #fff; /* ไอคอนเปลี่ยนเป็นสีขาว */
+    transform: translateY(-3px); /* ลอยขึ้นนิดนึง */
+    box-shadow: 0 5px 15px rgba(107, 140, 66, 0.3); /* เงาสีเขียว */
+}
+/* --- Social Icons Styles --- */
+.social-icons {
+    margin-top: 30px; /* เว้นระยะห่างจากปุ่ม Contact Me */
+    display: flex;
+    gap: 15px; /* ระยะห่างระหว่างไอคอน */
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* ทำเป็นวงกลม */
+    
+    /* สีพื้นฐาน (ก่อนชี้) */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary); /* สีไอคอนสีเทา */
+    
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ */
+.social-icons a:hover {
+    background: var(--accent-color); /* พื้นหลังเปลี่ยนเป็นสีเขียว */
+    border-color: var(--accent-color);
+    color: #fff; /* ไอคอนเปลี่ยนเป็นสีขาว */
+    transform: translateY(-3px); /* ลอยขึ้นนิดนึง */
+    box-shadow: 0 5px 15px rgba(107, 140, 66, 0.3); /* เงาสีเขียว */
+}
